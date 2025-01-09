@@ -39,7 +39,7 @@ function calculatePoints({
 export function LotusSvg() {
   const [data, setData] = useState<string[]>([]);
   const { petalsMul, scale } = useControls({
-    petalsMul: { value: 1, step: 1, min: 1 },
+    petalsMul: { value: 1, step: 1, min: 1, max: 20 },
     scale: { value: 50, min: 50 },
   });
   useEffect(() => {
