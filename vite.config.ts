@@ -5,4 +5,5 @@ import { defineConfig } from 'vite';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [UnoCSS(), react()],
+    base: "/mandala-lotus-math-demo/"
 });
