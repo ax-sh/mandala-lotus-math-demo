@@ -77,29 +77,30 @@ function FlowerSvg() {
 
 function App() {
   return (
-    <section
-      className={clsx(
-        'bg-black text-white',
-        'min-h-screen',
-        'flex flex-col md:flex-row items-stretch'
-      )}
-    >
-      <main className={'bg-[#333] flex flex-grow'}>
-        <LotusSvg />
+    <>
+      <section
+        className={clsx(
+          'bg-black text-white',
+          'min-h-screen',
+          'flex flex-col md:flex-row items-stretch'
+        )}
+      >
+        <main className={'bg-[#101010] flex flex-grow'}>
+          <LotusSvg />
+
+          {/*<Canvas className={'grow'}>*/}
+          {/*  <Bounds fit={true}>*/}
+          {/*    <Lotus />*/}
+          {/*  </Bounds>*/}
+          {/*  /!*<OrbitControls />*!/*/}
+          {/*</Canvas>*/}
+        </main>
+        <SideBar />
+      </section>
+      <section className={'bg-black h-screen grid place-content-center'}>
         <FlowerSvg />
-        {/*<div className={'grid place-content-center row-span-1 col-span-1 '}>*/}
-        {/*  <LotusSvg />*/}
-        {/*  <LotusSvg />*/}
-        {/*</div>*/}
-        {/*<Canvas className={'grow'}>*/}
-        {/*  <Bounds fit={true}>*/}
-        {/*    <Lotus />*/}
-        {/*  </Bounds>*/}
-        {/*  /!*<OrbitControls />*!/*/}
-        {/*</Canvas>*/}
-      </main>
-      <SideBar />
-    </section>
+      </section>
+    </>
   );
 }
 
