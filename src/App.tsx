@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 
+import R2ThetaVisualization from './R2ThetaVisualization.tsx';
 import { LotusSvg, calcInnerWave, calcOuterWave, polarToCartesian } from './lotus-svg.tsx';
 
 function SideBar() {
@@ -99,6 +100,9 @@ function App() {
       </section>
       <section className={'bg-black h-screen grid place-content-center'}>
         <FlowerSvg />
+      </section>
+      <section className={'bg-black h-screen flex'}>
+        <R2ThetaVisualization />
       </section>
     </>
   );
