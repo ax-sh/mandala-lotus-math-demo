@@ -1,5 +1,5 @@
 import { Bounds, Line, LineProps, OrbitControls } from '@react-three/drei';
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { useControls } from 'leva';
 import { ComponentRef, useMemo, useRef } from 'react';
 import * as THREE from 'three';
@@ -85,6 +85,11 @@ function Lotus3DLine({ color }: { color: string }) {
     points.push(points[0].clone());
     return points;
   }, [baseRadius]);
+  useFrame(() => {
+    const i = ref.current;
+    if (!i) return;
+    i.rotation.z += 0.01;
+  });
 
   return <Line ref={ref} points={lines} color={color} lineWidth={2} />;
 }
