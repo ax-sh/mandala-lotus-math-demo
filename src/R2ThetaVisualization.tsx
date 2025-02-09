@@ -48,7 +48,7 @@ export function Lotus3D({ color }: Lotus3DProps) {
 }
 
 function Lotus3DLine({ color }: { color: string }) {
-  const ref = useRef<Line2 | LineSegments2 | null>(null);
+  const ref = useRef<ComponentRef<typeof Line>>(null);
   const lines = useMemo(() => {
     const points: THREE.Vector3[] = [];
     const segments = 1000;
