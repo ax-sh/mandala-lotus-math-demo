@@ -79,6 +79,10 @@ function FlowerSvg() {
 function App() {
   return (
     <>
+      {' '}
+      <section className={'bg-black h-screen flex'}>
+        <R2ThetaVisualization />
+      </section>
       <section
         className={clsx(
           'bg-black text-white',
@@ -100,9 +104,6 @@ function App() {
       </section>
       <section className={'bg-black h-screen grid place-content-center'}>
         <FlowerSvg />
-      </section>
-      <section className={'bg-black h-screen flex'}>
-        <R2ThetaVisualization />
       </section>
     </>
   );
