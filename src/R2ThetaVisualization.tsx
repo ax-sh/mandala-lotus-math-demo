@@ -1,5 +1,6 @@
-import { Line, LineProps, OrbitControls } from '@react-three/drei';
+import { Bounds, Line, LineProps, OrbitControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
+import { useControls } from 'leva';
 import { ComponentRef, useMemo, useRef } from 'react';
 import * as THREE from 'three';
 // \[ r_2(\theta) = 2 + \frac{|\cos(3\theta)| + 2\left(0.25 - \left|\cos\left(3\theta + \frac{\pi}{2}\right)\right|\right)}{2 + 8\left|\cos\left(6\theta + \frac{\pi}{2}\right)\right|} \]
@@ -50,15 +51,18 @@ function absCos(value: number) {
   const cos3Theta = Math.cos(value);
   return Math.abs(cos3Theta);
 }
+
 function Lotus3DLine({ color }: { color: string }) {
   const ref = useRef<ComponentRef<typeof Line>>(null);
+  const { baseRadius } = useControls({ baseRadius: { value: 9, step: 1, min: 1 } });
+
   const lines = useMemo(() => {
     const points: THREE.Vector3[] = [];
-    const segments = 1000;
+    const segments = 360;
 
     for (let i = 0; i < segments; i++) {
       const theta = (i / segments) * 2 * Math.PI;
-      const baseRadius = 2;
+
       // 2. Calculate the Numerator
       const absCos3Theta = absCos(3 * theta);
       const absCosShiftedTheta = absCos(3 * theta + Math.PI / 2);
@@ -80,7 +84,7 @@ function Lotus3DLine({ color }: { color: string }) {
     // Close the loop by duplicating the first point at the end
     points.push(points[0].clone());
     return points;
-  }, []);
+  }, [baseRadius]);
 
   return <Line ref={ref} points={lines} color={color} lineWidth={2} />;
 }
@@ -92,7 +96,9 @@ export default function R2ThetaVisualization() {
       <ambientLight intensity={0.5} />
       <pointLight position={[10, 10, 10]} />
       {/*<Lotus3D color={'green'} />*/}
-      <Lotus3DLine color={'green'} />
+      <Bounds fit={true}>
+        <Lotus3DLine color={'green'} />
+      </Bounds>
       <OrbitControls />
     </Canvas>
   );
