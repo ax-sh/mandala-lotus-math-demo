@@ -1,7 +1,7 @@
-import { CubicBezierLine, Line, OrbitControls, Sphere } from '@react-three/drei';
+import { CubicBezierLine, Line, OrbitControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import { useControls } from 'leva';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import * as THREE from 'three';
 
 function LotusFlower() {

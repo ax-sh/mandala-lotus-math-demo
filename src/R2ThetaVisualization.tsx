@@ -3,9 +3,9 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { useControls } from 'leva';
 import { ComponentRef, useMemo, useRef } from 'react';
 import * as THREE from 'three';
+
 // \[ r_2(\theta) = 2 + \frac{|\cos(3\theta)| + 2\left(0.25 - \left|\cos\left(3\theta + \frac{\pi}{2}\right)\right|\right)}{2 + 8\left|\cos\left(6\theta + \frac{\pi}{2}\right)\right|} \]
 // ___
-import { Line2, LineSegments2 } from 'three-stdlib';
 
 function usePoints() {
   return useMemo(() => {
