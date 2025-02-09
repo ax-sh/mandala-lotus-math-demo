@@ -46,7 +46,10 @@ export function Lotus3D({ color }: Lotus3DProps) {
     </line>
   );
 }
-
+function absCos(value: number) {
+  const cos3Theta = Math.cos(value);
+  return Math.abs(cos3Theta);
+}
 function Lotus3DLine({ color }: { color: string }) {
   const ref = useRef<ComponentRef<typeof Line>>(null);
   const lines = useMemo(() => {
@@ -57,19 +60,14 @@ function Lotus3DLine({ color }: { color: string }) {
       const theta = (i / segments) * 2 * Math.PI;
       const baseRadius = 2;
       // 2. Calculate the Numerator
-      const cos3Theta = Math.cos(3 * theta);
-      const absCos3Theta = Math.abs(cos3Theta);
-
-      const cosShiftedTheta = Math.cos(3 * theta + Math.PI / 2);
-      const absCosShiftedTheta = Math.abs(cosShiftedTheta);
-
+      const absCos3Theta = absCos(3 * theta);
+      const absCosShiftedTheta = absCos(3 * theta + Math.PI / 2);
       const numerator = absCos3Theta + 2 * (0.25 - absCosShiftedTheta);
 
       // Calculate the Denominator
-      const cos6ThetaShifted = Math.cos(6 * theta + Math.PI / 2);
-      const absCos6ThetaShifted = Math.abs(cos6ThetaShifted);
-
+      const absCos6ThetaShifted = absCos(6 * theta + Math.PI / 2);
       const denominator = 2 + 8 * absCos6ThetaShifted;
+
       //
       const r = baseRadius + numerator / denominator;
 
